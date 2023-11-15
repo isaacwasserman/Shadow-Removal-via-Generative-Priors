@@ -1,5 +1,6 @@
 # ShadowGP
 
+This is a fork of [Yingqing He's Repo]https://github.com/YingqingHe/Shadow-Removal-via-Generative-Priors/tree/main
 
 **This repository provides the official codes for our paper: [Unsupervised Portrait Shadow Removal via Generative Priors (ACM MM 2021)](https://arxiv.org/abs/2108.03466).** 
 > **Unsupervised Portrait Shadow Removal via Generative Priors** <br>
@@ -22,27 +23,13 @@ ShadowGP can decompose the **single input shadowed portrait image** into **3 par
 
 <br />
 
-## Install Environment
-To install and activate the environment, run the following commands:
-```
-conda create -n shadowgp python=3.7
-conda activate shadowgp
-pip3 install torch==1.3.1+cu100 torchvision==0.4.2+cu100 -f https://download.pytorch.org/whl/torch_stable.html
-pip3 install opencv-python tqdm scikit-image==0.15 Pillow==7.1.0 Ipython ninja
-```
-Our code has the same system requirements as [StyleGAN2-PyTorch](https://github.com/rosinality/stylegan2-pytorch).
+## Install Environment, Download Checkpoints, and Download Dataset
+Running the following commands will install a conda environment for Linux systems and download the pretrained checkpoints and evaluation dataset:
 
-<br />
-
-## Download Checkpoints
-Download the pretrained StyleGAN `550000.pt` and the pretrained face segmentation model `face-seg-BiSeNet-79999_iter.pth` from the [google drive](https://drive.google.com/drive/folders/1Rg5He8XIY8qP4JYPFRRGUIvfZUcqm8zt?usp=sharing), and put them in `checkpoint/`.
 ```
-cd Shadow-Removal-via-Generative-Priors
-mkdir checkpoint
-mv ${YOUR_PATH}/550000.pt checkpoint/
-mv ${YOUR_PATH}/face-seg-BiSeNet-79999_iter.pth checkpoint/
+sh install_conda.sh   # If conda not installed
+source setup.sh
 ```
-Optional: If the lpips checkpoint cannot be downloaded automatically, you can also manually download the `weights.tar.gz` to the project directory and run `tar -zxvf weights.tar.gz`. Then you will see the checkpoint in `lpips/weights/v0.1/vgg.pth`.
 
 ## Run
 ```
