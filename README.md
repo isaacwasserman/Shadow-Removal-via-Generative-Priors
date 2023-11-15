@@ -23,6 +23,9 @@ ShadowGP can decompose the **single input shadowed portrait image** into **3 par
 
 <br />
 
+## Running in Colab
+To install dependencies, download checkpoints, and run the model from Colab, open `shadowgp_colab.ipynb` from Google Colab. The cells in this notebook clone the rest of this repo and run all of the necessary setup.
+
 ## Install Environment, Download Checkpoints, and Download Dataset
 Running the following commands will install a conda environment for Linux systems and download the pretrained checkpoints and evaluation dataset:
 
