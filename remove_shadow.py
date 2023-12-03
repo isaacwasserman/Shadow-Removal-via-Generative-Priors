@@ -363,6 +363,9 @@ def main(img_path, res_dir, device, args):
 
 if __name__ == "__main__":
 
+    # Set to False if existing results should be overwritten
+    resume = True
+
     parser = prepare_parser()
     parser = add_shadow_removal_parser(parser)
     args = parser.parse_args()
@@ -370,7 +373,17 @@ if __name__ == "__main__":
     os.makedirs(args.save_dir, exist_ok=True)
     torch.set_num_threads(3)
 
-    for img in os.listdir(args.img_dir):
+    all_imgs = os.listdir(args.img_dir)
+    images_already_processed = [basename + ".png" for basename in os.listdir(args.save_dir)]
+
+    if resume:
+        images_to_predict = [img for img in all_imgs if img not in images_already_processed]
+        print(f"Predicting remaining {len(images_to_predict)}/{len(all_imgs)} images")
+    else:
+        images_to_predict = all_imgs
+        print(f"Predicting all {len(images_to_predict)} images")
+
+    for img in images_to_predict:
         img_path = os.path.join(args.img_dir, img)
         img_name = os.path.splitext(img)[0]
         res_dir = os.path.join(args.save_dir, img_name)
